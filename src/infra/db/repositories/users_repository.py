@@ -1,8 +1,10 @@
 from src.infra.db.settings.connection import DBConnectionHandler
 from src.infra.db.models.users import Users
+from src.domain.repositories.users_repository import IUsersRepository
+from src.domain.entities.user import User
 
 
-class UserRepository:
+class UserRepository(IUsersRepository):
 
     @classmethod
     def insert_user(cls, first_name: str, last_name: str, age: int) -> None:
@@ -18,7 +20,7 @@ class UserRepository:
                 raise exception
 
     @classmethod
-    def select_user(cls, first_name) -> any:
+    def select_user(cls, first_name: str) -> list[User]:
         with DBConnectionHandler() as database:
             try:
                 registry_on_db = (
