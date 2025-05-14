@@ -7,4 +7,14 @@ class UserFinder(IUserFinder):
         self.__users_repository = users_repository
 
     def find(self, first_name: str) -> dict:
-        pass
+        users_on_db = self.__users_repository.select_user(first_name)
+        if users_on_db == []:
+            raise Exception("Usuario não Encontrado")
+
+        response = {
+            "type": "Users",
+            "count": len(users_on_db),
+            "attributes": users_on_db,
+        }
+
+        return response
