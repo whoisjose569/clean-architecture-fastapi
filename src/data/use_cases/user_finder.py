@@ -14,7 +14,14 @@ class UserFinder(IUserFinder):
         response = {
             "type": "Users",
             "count": len(users_on_db),
-            "attributes": users_on_db,
+            "attributes": [
+                {
+                    "first_name": user.first_name,
+                    "last_name": user.last_name,
+                    "age": user.age,
+                }
+                for user in users_on_db
+            ],
         }
 
         return response
