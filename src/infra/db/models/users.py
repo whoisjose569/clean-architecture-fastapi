@@ -3,7 +3,7 @@ from src.infra.db.settings.base import Base
 from sqlalchemy.orm import Mapped, mapped_column
 
 
-class Users(Base):
+class User(Base):
     __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(sa.Integer, primary_key=True, autoincrement=True)
