@@ -7,18 +7,7 @@ class UserRegister(IUserRegister):
     def __init__(self, user_repository: IUsersRepository):
         self.__user_repository = user_repository
 
-    def register(self, user: User):
+    def register(self, user: User) -> None:
         self.__user_repository.insert_user(
             first_name=user.first_name, last_name=user.last_name, age=user.age
         )
-        response = {
-            "type": "Users",
-            "count": 1,
-            "attributes": {
-                "first_name": user.first_name,
-                "last_name": user.last_name,
-                "age": user.age,
-            },
-        }
-
-        return response
