@@ -1,7 +1,6 @@
 from src.infra.db.settings.connection import DBConnectionHandler
-from src.infra.db.models.users import Users
 from src.domain.repositories.users_repository import IUsersRepository
-from src.domain.entities.user import User
+from src.infra.db.models.users import User
 
 
 class UserRepository(IUsersRepository):

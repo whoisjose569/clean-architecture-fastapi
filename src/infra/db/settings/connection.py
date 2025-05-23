@@ -8,7 +8,7 @@ load_dotenv()
 
 class DBConnectionHandler:
     def __init__(self):
-        self.__connection_string = os.getenv("DATABASE_URL")
+        self.__connection_string = os.getenv("DATABASE_URI")
         self.__engine = self.__create_database_engine()
         self.session = None
 
